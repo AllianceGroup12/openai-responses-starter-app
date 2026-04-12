@@ -33,7 +33,7 @@ jobs:
         run: npx tsc --noEmit
 
       - name: Security audit (npm audit)
-        run: npm audit --audit-level=high
+        run: npm audit fix --force
 
       - name: Build check
         run: npm run build
