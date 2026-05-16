@@ -41,15 +41,17 @@ const Message: React.FC<MessageProps> = ({ message }) => {
                         /\.(png|jpg|jpeg|gif|webp|svg)$/i.test(a.filename)
                     )
                     .map((a, i) => (
-                      <Image
-                        key={i}
-                        src={`/api/container_files/content?file_id=${a.fileId}${a.containerId ? `&container_id=${a.containerId}` : ""}${a.filename ? `&filename=${encodeURIComponent(a.filename)}` : ""}`}
-                        alt={a.filename || ""}
-                        width={800}
-                        height={600}
-                        className="mt-2 max-w-full h-auto"
-                        unoptimized
-                      />
+                      <div key={i} className="mt-2 relative w-full">
+                        <Image
+                          src={`/api/container_files/content?file_id=${a.fileId}${a.containerId ? `&container_id=${a.containerId}` : ""}${a.filename ? `&filename=${encodeURIComponent(a.filename)}` : ""}`}
+                          alt={a.filename || ""}
+                          width={0}
+                          height={0}
+                          sizes="100vw"
+                          className="max-w-full h-auto"
+                          unoptimized
+                        />
+                      </div>
                     ))}
               </div>
             </div>
